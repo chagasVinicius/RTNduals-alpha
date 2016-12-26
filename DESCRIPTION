@@ -4,7 +4,7 @@ Title: Co-regulation analysis and inference of 'dual regulons'
 Version: 0.99.0
 Author: Vinicius S. Chagas, Clarice S. Groeneveld, ..., Gordon Robertson, Mauro A. A. Castro
 Maintainer: Vinicius Chagas <vinicius.chagas@ufpr.br>, Mauro Castro <mauro.castro@ufpr.br>
-Depends: R (>= 3.2.4), methods, RTN, graphics
+Depends: R (>= 3.3), methods, RTN, graphics
 Imports: grDevices, stats, utils
 Suggests: knitr, rmarkdown, BiocStyle, RUnit, BiocGenerics
 Description: Performs a search for regulons, from different Transcriptional Networks inferred by RTN, that co-regulate ('Duals') the same targets.

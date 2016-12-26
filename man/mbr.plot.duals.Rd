@@ -9,19 +9,24 @@ mbr.plot.duals(object, names.motifs = NULL, filepath = NULL, alpha = 0.8,
   estimator = "spearman")
 }
 \arguments{
-\item{object}{A processed object of class \linkS4class{MBR} evaluated by the method \code{\link[RTNmotifs:mbr.association]{mbr.association}}.}
+\item{object}{A processed object of class \linkS4class{MBR} evaluated by 
+the method \code{\link[RTNmotifs:mbr.association]{mbr.association}}.}
 
-\item{names.motifs}{A vector with 'dual regulon' indentifiers from the 'motifsInformation' table.}
+\item{names.motifs}{A vector with 'dual regulon' indentifiers from the 
+'motifsInformation' table.}
 
-\item{filepath}{A character string indicating the file path where the plot should be saved.}
+\item{filepath}{A character string indicating the file path where the plot 
+should be saved.}
 
 \item{alpha}{The alpha transparency, a number in [0,1].}
 
-\item{lncols}{A vector of length 2 indicating the colors of the negative and positive target clouds, respectively.}
+\item{lncols}{A vector of length 2 indicating the colors of the negative 
+and positive target clouds, respectively.}
 
 \item{lwd}{Line width, a decimal value (between 0 and 1).}
 
-\item{estimator}{A character string indicating the association metric. One of "spearman" (default), "kendall", or "pearson", can be abbreviated.}
+\item{estimator}{A character string indicating the association metric. 
+One of "spearman" (default), "kendall", or "pearson", can be abbreviated.}
 }
 \value{
 A plot with the shared target clouds between dual regulons.
@@ -36,7 +41,8 @@ annot <- dt4rtn$gexpIDs
 tfs1 <- dt4rtn$tfs[c("IRF8","IRF1","PRDM1","AFF3","E2F3")]
 tfs2 <- dt4rtn$tfs[c("HCLS1","STAT4","STAT1","LMO4","ZNF552")]
 ##---mbr.preprocess
-rmbr <- mbr.preprocess(gexp=gexp, regulatoryElements1 = tfs1, regulatoryElements2=tfs2, gexpIDs=annot)
+rmbr <- mbr.preprocess(gexp=gexp, regulatoryElements1 = tfs1, 
+regulatoryElements2=tfs2, gexpIDs=annot)
 ##---mbr.permutation
 rmbr <- mbr.permutation(rmbr, nPermutations=10)
 ##---mbr.bootstrap
@@ -48,8 +54,8 @@ rmbr <- mbr.association(rmbr, prob=0.75)
 ##---mbr.duals
 rmbr <- mbr.duals(rmbr)
 ##---
-duals <- rownames(rmbr@results$motifsInformation)[1]
-mbr.plot.duals(rmbr, names.motifs=duals)
+dual <- mbr.get(rmbr, what="dualRegulons")[1]
+mbr.plot.duals(rmbr, names.motifs=dual)
 
 }
 

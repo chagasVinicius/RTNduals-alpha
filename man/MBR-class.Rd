@@ -3,9 +3,11 @@
 \docType{class}
 \name{MBR-class}
 \alias{MBR-class}
-\title{MBR: an S4 class for co-regulation analysis and inference of 'dual regulons'.}
+\title{MBR: an S4 class for co-regulation analysis and inference of 'dual 
+regulons'.}
 \description{
-MBR: an S4 class for co-regulation analysis and inference of 'dual regulons'.
+MBR: an S4 class for co-regulation analysis and inference of 'dual 
+regulons'.
 }
 \section{Slots}{
 
@@ -18,7 +20,8 @@ MBR: an S4 class for co-regulation analysis and inference of 'dual regulons'.
 
 \item{\code{testedElementsTNI2}}{regulatory elements listed in the TNI2.}
 
-\item{\code{dualsRegulons}}{all possible 'duals regulons' computed by \code{\link[RTNmotifs:mbr.association]{mbr.association}}}
+\item{\code{dualRegulons}}{all possible 'duals regulons' computed by 
+\code{\link[RTNmotifs:mbr.association]{mbr.association}}}
 
 \item{\code{results}}{a list, results from the MBR methods.}
 
@@ -26,6 +29,7 @@ MBR: an S4 class for co-regulation analysis and inference of 'dual regulons'.
 
 \item{\code{summary}}{a list, summary for 'para' and 'results'.}
 
-\item{\code{status}}{a character vector specifying the status of the MBR object based on the available methods.}
+\item{\code{status}}{a character vector specifying the status of the MBR object 
+based on the available methods.}
 }}
 

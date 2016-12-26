@@ -11,13 +11,17 @@
 \arguments{
 \item{object}{A preprocessed object of class \linkS4class{MBR}}
 
-\item{what}{a single character value specifying which information should be retrieved from the slots. Options: "TNI1", "TNI2", "testedElementsTNI1", "testedElementsTNI2", "dualsRegulons", "results", "para", "summary", "status", "motifsInformation" and "hyperResults"}
+\item{what}{a single character value specifying which information should be 
+retrieved from the slots. Options: "TNI1", "TNI2", "testedElementsTNI1", 
+"testedElementsTNI2", "dualRegulons", "results", "para", "summary", 
+"status", "motifsInformation" and "hyperResults"}
 }
 \value{
 A slot content from a object of class 'MBR' \linkS4class{MBR} object
 }
 \description{
-Get information from individual slots in an MBR object and any available results from previous analysis.
+Get information from individual slots in an MBR object and any available 
+results from previous analysis.
 }
 \examples{
 data("dt4rtn", package = "RTN")
@@ -26,7 +30,8 @@ annot <- dt4rtn$gexpIDs
 tfs1 <- dt4rtn$tfs[c("IRF8","IRF1","PRDM1","AFF3","E2F3")]
 tfs2 <- dt4rtn$tfs[c("HCLS1","STAT4","STAT1","LMO4","ZNF552")]
 ##---mbr.preprocess
-rmbr <- mbr.preprocess(gexp=gexp, regulatoryElements1 = tfs1, regulatoryElements2=tfs2, gexpIDs=annot)
+rmbr <- mbr.preprocess(gexp=gexp, regulatoryElements1 = tfs1, 
+regulatoryElements2=tfs2, gexpIDs=annot)
 ##---get the 'TNI1' slot using 'mbr.get'
 tni1 <- mbr.get(rmbr, what="TNI1")
 

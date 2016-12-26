@@ -9,17 +9,22 @@
 \S4method{mbr.bootstrap}{MBR}(object, verbose = TRUE, ...)
 }
 \arguments{
-\item{object}{A processed objec of class \linkS4class{MBR} evaluated by the method \code{\link[RTNmotifs:mbr.permutation]{mbr.permutation}}.}
+\item{object}{A processed objec of class \linkS4class{MBR} evaluated by the 
+method \code{\link[RTNmotifs:mbr.permutation]{mbr.permutation}}.}
 
-\item{verbose}{A single logical value specifying to display detailed messages (when verbose=TRUE) or not (when verbose=FALSE).}
+\item{verbose}{A single logical value specifying to display detailed 
+messages (when verbose=TRUE) or not (when verbose=FALSE).}
 
-\item{...}{Additional arguments passed to the \code{\link[RTN:tni.bootstrap]{tni.bootstrap}} function.}
+\item{...}{Additional arguments passed to the 
+\code{\link[RTN:tni.bootstrap]{tni.bootstrap}} function.}
 }
 \value{
-An \linkS4class{MBR} object with two consensus mutual information matrices, one in each "TNI" slot.
+An \linkS4class{MBR} object with two consensus mutual information 
+matrices, one in each "TNI" slot.
 }
 \description{
-This function takes an MBR object and computes two consensus transcriptional networks.
+This function takes an MBR object and computes two consensus transcriptional 
+networks.
 }
 \examples{
 data("dt4rtn", package = "RTN")
@@ -28,7 +33,8 @@ annot <- dt4rtn$gexpIDs
 tfs1 <- dt4rtn$tfs[c("IRF8","IRF1","PRDM1","AFF3","E2F3")]
 tfs2 <- dt4rtn$tfs[c("HCLS1","STAT4","STAT1","LMO4","ZNF552")]
 ##---mbr.preprocess
-rmbr <- mbr.preprocess(gexp=gexp, regulatoryElements1 = tfs1, regulatoryElements2=tfs2, gexpIDs=annot)
+rmbr <- mbr.preprocess(gexp=gexp, regulatoryElements1 = tfs1, 
+regulatoryElements2=tfs2, gexpIDs=annot)
 ##---mbr.permutation
 rmbr <- mbr.permutation(rmbr, nPermutations=10)
 ##---mbr.bootstrap

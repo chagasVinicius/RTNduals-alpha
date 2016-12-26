@@ -11,15 +11,19 @@
 \arguments{
 \item{object}{A preprocessed object of class \linkS4class{MBR}.}
 
-\item{verbose}{A single logical value specifying to display detailed messages (when verbose=TRUE) or not (when verbose=FALSE).}
+\item{verbose}{A single logical value specifying to display detailed 
+messages (when verbose=TRUE) or not (when verbose=FALSE).}
 
-\item{...}{Additional arguments passed on to the \code{\link[RTN:tni.permutation]{tni.permutation}} function.}
+\item{...}{Additional arguments passed on to the 
+\code{\link[RTN:tni.permutation]{tni.permutation}} function.}
 }
 \value{
-An \linkS4class{MBR} object with two mutual information matrices, one in each "TNI" slot.
+An \linkS4class{MBR} object with two mutual information matrices, 
+one in each "TNI" slot.
 }
 \description{
-This function takes an MBR object and computes two transcriptional networks inferred 
+This function takes an MBR object and computes two transcriptional networks 
+inferred 
 by mutual information (with multiple hypothesis testing corrections).
 }
 \examples{
@@ -29,7 +33,8 @@ annot <- dt4rtn$gexpIDs
 tfs1 <- dt4rtn$tfs[c("IRF8","IRF1","PRDM1","AFF3","E2F3")]
 tfs2 <- dt4rtn$tfs[c("HCLS1","STAT4","STAT1","LMO4","ZNF552")]
 ##---mbr.preprocess
-rmbr <- mbr.preprocess(gexp=gexp, regulatoryElements1 = tfs1, regulatoryElements2=tfs2, gexpIDs=annot)
+rmbr <- mbr.preprocess(gexp=gexp, regulatoryElements1 = tfs1, 
+regulatoryElements2=tfs2, gexpIDs=annot)
 ##---mbr.permutation
 rmbr <- mbr.permutation(rmbr, nPermutations=10)
 

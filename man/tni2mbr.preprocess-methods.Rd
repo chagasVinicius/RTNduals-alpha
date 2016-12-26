@@ -13,7 +13,8 @@
 
 \item{tni2}{Another 'TNI' class object}
 
-\item{verbose}{A single logical value specifying to display detailed messages (when verbose=TRUE) or not (when verbose=FALSE).}
+\item{verbose}{A single logical value specifying to display detailed messages 
+(when verbose=TRUE) or not (when verbose=FALSE).}
 }
 \value{
 An \linkS4class{MBR} object.
@@ -28,7 +29,8 @@ annot <- dt4rtn$gexpIDs
 tfs1 <- dt4rtn$tfs[c("IRF8","IRF1","PRDM1","AFF3","E2F3")]
 tfs2 <- dt4rtn$tfs[c("HCLS1","STAT4","STAT1","LMO4","ZNF552")]
 ##---mbr.preprocess
-rmbr <- mbr.preprocess(gexp=gexp, regulatoryElements1 = tfs1, regulatoryElements2=tfs2, gexpIDs=annot)
+rmbr <- mbr.preprocess(gexp=gexp, regulatoryElements1 = tfs1, 
+regulatoryElements2=tfs2, gexpIDs=annot)
 ##---mbr.permutation
 rmbr <- mbr.permutation(rmbr, nPermutations=10)
 ##---mbr.bootstrap

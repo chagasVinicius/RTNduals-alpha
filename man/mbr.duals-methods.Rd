@@ -10,21 +10,27 @@
   evidenceColname = NULL, verbose = TRUE)
 }
 \arguments{
-\item{object}{A processed object of class \linkS4class{MBR} evaluated by the method \code{\link[RTNmotifs:mbr.association]{mbr.association}}.}
+\item{object}{A processed object of class \linkS4class{MBR} evaluated by the 
+method \code{\link[RTNmotifs:mbr.association]{mbr.association}}.}
 
-\item{supplementary.table}{An optional 'data.frame' with three columns representing 
+\item{supplementary.table}{An optional 'data.frame' with three columns 
+representing 
 (1) regulatory elements of 'TNI1', (2) regulatory elements of 'TNI2', and 
 (3) external evidences between the regulatory elements.}
 
-\item{evidenceColname}{A single character value specifying a column in the 'supplementary.table'.}
+\item{evidenceColname}{A single character value specifying a column in 
+the 'supplementary.table'.}
 
-\item{verbose}{A single logical value specifying to display detailed messages (when verbose=TRUE) or not (when verbose=FALSE).}
+\item{verbose}{A single logical value specifying to display detailed 
+messages (when verbose=TRUE) or not (when verbose=FALSE).}
 }
 \value{
-An \linkS4class{MBR} object with a data.frame in the slot 'results' listing the input additional evidences.
+An \linkS4class{MBR} object with a data.frame in the slot 'results' 
+listing the input additional evidences.
 }
 \description{
-This function lists the inferred 'dual regulons' and, if available, adds external evidences.
+This function lists the inferred 'dual regulons' and, if available, 
+adds external evidences.
 }
 \examples{
 data("dt4rtn", package = "RTN")
@@ -33,7 +39,8 @@ annot <- dt4rtn$gexpIDs
 tfs1 <- dt4rtn$tfs[c("IRF8","IRF1","PRDM1","AFF3","E2F3")]
 tfs2 <- dt4rtn$tfs[c("HCLS1","STAT4","STAT1","LMO4","ZNF552")]
 ##---mbr.preprocess
-rmbr <- mbr.preprocess(gexp=gexp, regulatoryElements1 = tfs1, regulatoryElements2=tfs2, gexpIDs=annot)
+rmbr <- mbr.preprocess(gexp=gexp, regulatoryElements1 = tfs1, 
+regulatoryElements2=tfs2, gexpIDs=annot)
 ##---mbr.permutation
 rmbr <- mbr.permutation(rmbr, nPermutations=10)
 ##---mbr.bootstrap
@@ -45,11 +52,11 @@ rmbr <- mbr.association(rmbr, prob=0.75)
 ##---a 'toy' table with supplementary evidences
 motifsInformation <- mbr.get(rmbr, what="motifsInformation")
 n <- nrow(motifsInformation)
-idx <- sample(1:n, size=round(n/2))
-supplementaryTable <- motifsInformation[idx,c("Regulon1","Regulon2")]
-supplementaryTable$ToyEvidence <- rnorm(nrow(supplementaryTable))
+supplementaryTable <- motifsInformation[1:n,c("Regulon1","Regulon2")]
+supplementaryTable$ToyEvidence <- rnorm(n)
 ##---mbr.duals
-rmbr <- mbr.duals(rmbr, supplementary.table = supplementaryTable, evidenceColname = "ToyEvidence")
+rmbr <- mbr.duals(rmbr, supplementary.table = supplementaryTable, 
+evidenceColname = "ToyEvidence")
 ##---motifsInformation with 'Evidence'
 motifsInformation <- mbr.get(rmbr, what="motifsInformation")
 head(motifsInformation)

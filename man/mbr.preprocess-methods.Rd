@@ -10,15 +10,20 @@
   regulatoryElements2, verbose = TRUE, ...)
 }
 \arguments{
-\item{gexp}{A numerical matrix, typically with mRNA and/or miRNA expression values.}
+\item{gexp}{A numerical matrix, typically with mRNA and/or miRNA expression 
+values.}
 
-\item{regulatoryElements1}{A named vector with regulatory elements listed in 'gexp' rownames.}
+\item{regulatoryElements1}{A named vector with regulatory elements listed in 
+'gexp' rownames.}
 
-\item{regulatoryElements2}{A named vector with regulatory elements listed in 'gexp' rownames.}
+\item{regulatoryElements2}{A named vector with regulatory elements listed in 
+'gexp' rownames.}
 
-\item{verbose}{A single logical value specifying to display detailed messages (when verbose=TRUE) or not (when verbose=FALSE).}
+\item{verbose}{A single logical value specifying to display detailed 
+messages (when verbose=TRUE) or not (when verbose=FALSE).}
 
-\item{...}{Additional arguments passed on to \code{\link[RTN:tni.preprocess]{tni.preprocess}} function.}
+\item{...}{Additional arguments passed on to 
+\code{\link[RTN:tni.preprocess]{tni.preprocess}} function.}
 }
 \value{
 A preprocessed 'MBR-class' object.
@@ -33,7 +38,8 @@ annot <- dt4rtn$gexpIDs
 tfs1 <- dt4rtn$tfs[c("IRF8","IRF1","PRDM1","AFF3","E2F3")]
 tfs2 <- dt4rtn$tfs[c("HCLS1","STAT4","STAT1","LMO4","ZNF552")]
 ##---mbr.preprocess
-rmbr <- mbr.preprocess(gexp=gexp, regulatoryElements1 = tfs1, regulatoryElements2=tfs2, gexpIDs=annot)
+rmbr <- mbr.preprocess(gexp=gexp, regulatoryElements1 = tfs1, 
+regulatoryElements2=tfs2, gexpIDs=annot)
 
 }
 
