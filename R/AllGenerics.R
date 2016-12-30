@@ -26,6 +26,6 @@ setGeneric("mbr.duals",
 setGeneric("tni2mbr.preprocess",
            function(tni1, tni2,  verbose = TRUE)
              standardGeneric("tni2mbr.preprocess"), package="RTNmotifs")
-setGeneric("mbr.get",
+setGeneric("mbr_get",
            function(object, what="status")
-             standardGeneric("mbr.get"), package="RTNmotifs")
+             standardGeneric("mbr_get"), package="RTNmotifs")

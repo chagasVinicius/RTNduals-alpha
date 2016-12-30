@@ -463,7 +463,7 @@ setMethod("mbr.association",
             pvlist <- .jcOverlap(pvlist, regel, tbmi)
             
             ##-----Hypergeometric
-            tni1 <- mbr.get(object, what="TNI1")
+            tni1 <- mbr_get(object, what="TNI1")
             universe <- rownames(tni1@gexp)
             hyperresults <- .mbr.hyper(pvlist=pvlist, regulons=regulons, 
                                        regel=regel, universe=universe, 
@@ -544,7 +544,7 @@ setMethod("mbr.association",
 #' ##---mbr.association
 #' rmbr <- mbr.association(rmbr, prob=0.75)
 #' ##---a 'toy' table with supplementary evidences
-#' motifsInformation <- mbr.get(rmbr, what="motifsInformation")
+#' motifsInformation <- mbr_get(rmbr, what="motifsInformation")
 #' n <- nrow(motifsInformation)
 #' supplementaryTable <- motifsInformation[1:n,c("Regulon1","Regulon2")]
 #' supplementaryTable$ToyEvidence <- rnorm(n)
@@ -552,7 +552,7 @@ setMethod("mbr.association",
 #' rmbr <- mbr.duals(rmbr, supplementary.table = supplementaryTable, 
 #' evidenceColname = "ToyEvidence")
 #' ##---motifsInformation with 'Evidence'
-#' motifsInformation <- mbr.get(rmbr, what="motifsInformation")
+#' motifsInformation <- mbr_get(rmbr, what="motifsInformation")
 #' head(motifsInformation)
 #'
 #' @importFrom utils setTxtProgressBar txtProgressBar
@@ -629,8 +629,8 @@ setMethod( "mbr.duals",
 #' rmbr <- mbr.bootstrap(rmbr, nBootstrap=10)
 #' rmbr <- mbr.dpi.filter(rmbr)
 #' ##---tni2mbr.preprocess
-#' tni1 <- mbr.get(rmbr, what="TNI1")
-#' tni2 <- mbr.get(rmbr, what="TNI2")
+#' tni1 <- mbr_get(rmbr, what="TNI1")
+#' tni2 <- mbr_get(rmbr, what="TNI2")
 #' rmbr <- tni2mbr.preprocess(tni1, tni2)
 #'
 #' @import methods
@@ -711,23 +711,23 @@ setMethod( "show",
 #' ##---mbr.preprocess
 #' rmbr <- mbr.preprocess(gexp=gexp, regulatoryElements1 = tfs1, 
 #' regulatoryElements2=tfs2, gexpIDs=annot)
-#' ##---get the 'TNI1' slot using 'mbr.get'
-#' tni1 <- mbr.get(rmbr, what="TNI1")
+#' ##---get the 'TNI1' slot using 'mbr_get'
+#' tni1 <- mbr_get(rmbr, what="TNI1")
 #' 
 #' @import methods
 #' @docType methods
-#' @rdname mbr.get-methods
-#' @aliases mbr.get
+#' @rdname mbr_get-methods
+#' @aliases mbr_get
 #' @export
 ##------------------------------------------------------------------------------
 ##get slots from MBR object
-setMethod( "mbr.get",
+setMethod( "mbr_get",
            "MBR", 
            function(object, what="status")
            {
             ##---check input arguments
             mbr.checks(name="object", para=object)
-            mbr.checks(name="mbr.get", para=what)
+            mbr.checks(name="mbr_get", para=what)
             ##---Association options any change needs update!
             optsAssoci <- c("testedElementsTNI1", "testedElementsTNI2", 
                             "dualRegulons", "motifsInformation", "results", 

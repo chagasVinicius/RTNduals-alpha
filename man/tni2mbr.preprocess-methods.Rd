@@ -37,8 +37,8 @@ rmbr <- mbr.permutation(rmbr, nPermutations=10)
 rmbr <- mbr.bootstrap(rmbr, nBootstrap=10)
 rmbr <- mbr.dpi.filter(rmbr)
 ##---tni2mbr.preprocess
-tni1 <- mbr.get(rmbr, what="TNI1")
-tni2 <- mbr.get(rmbr, what="TNI2")
+tni1 <- mbr_get(rmbr, what="TNI1")
+tni2 <- mbr_get(rmbr, what="TNI2")
 rmbr <- tni2mbr.preprocess(tni1, tni2)
 
 }

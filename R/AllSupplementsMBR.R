@@ -356,7 +356,7 @@
     stop("'evidenceColname' should be the third column in 'supplementary.table", 
          call.=FALSE)
   ##---
-  motifsInformation <- mbr.get(object, what="motifsInformation")
+  motifsInformation <- mbr_get(object, what="motifsInformation")
   colnms <- colnames(motifsInformation)
   if(evidenceColname%in%colnms)
   {
@@ -365,7 +365,7 @@
   ##-----
   ##-----Calcules the consistency
   idx <- which(colnames(supplementary.table)%in%evidenceColname)
-  tni1 <- mbr.get(object, what="TNI1"); annot <- tni1@annotation 
+  tni1 <- mbr_get(object, what="TNI1"); annot <- tni1@annotation 
   annot <- as.matrix(annot)
   tmp <- as.matrix(supplementary.table); ttmp <- tmp[,-idx]
   colnames(tmp) <- colnames(supplementary.table)
@@ -387,7 +387,7 @@
 .checkLoops <- function (object, supplementary.table, evidenceColname, 
                          verbose=TRUE)
 {
-  motifsInformation <- mbr.get(object, what="motifsInformation")
+  motifsInformation <- mbr_get(object, what="motifsInformation")
   motifsInformation[, evidenceColname] <- NA
   ##---
   if(verbose) 
@@ -396,8 +396,8 @@
   if(verbose)pb<-txtProgressBar(style=3)
   x <- 0
   ##---
-  regs1 <- mbr.get(object, what="testedElementsTNI1")
-  regs2 <- mbr.get(object, what="testedElementsTNI2")
+  regs1 <- mbr_get(object, what="testedElementsTNI1")
+  regs2 <- mbr_get(object, what="testedElementsTNI2")
   regs <- c(regs1,regs2)
   for (i in 1:length(regs1))
   {

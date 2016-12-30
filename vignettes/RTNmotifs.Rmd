@@ -84,7 +84,7 @@ rmbr
 ```
 
 ## Run the association analysis between regulons
-The `mbr.association` method takes the two transcriptional networks computed in the previous steps and enumerates all motifs between all regulons. The method retrieves the mutual information between regulators and assesses the agreement between the predicted downstream effects using correlation analysis. A hypergeometric test is used to evaluate whether the common targets are potentially affected by both regulators in a number greater than what would be expected by chance. A summary of the results can be accessed from the 'summary' slot using the `mbr.get` function.
+The `mbr.association` method takes the two transcriptional networks computed in the previous steps and enumerates all motifs between all regulons. The method retrieves the mutual information between regulators and assesses the agreement between the predicted downstream effects using correlation analysis. A hypergeometric test is used to evaluate whether the common targets are potentially affected by both regulators in a number greater than what would be expected by chance. A summary of the results can be accessed from the 'summary' slot using the `mbr_get` function.
 ```{r eval=TRUE}
 ##---run the main RTNmotifs methods
 rmbr <- mbr.association(rmbr, prob=0.75, verbose=FALSE)
@@ -92,7 +92,7 @@ rmbr
 ```
 
 ```{r eval=TRUE}
-mbr.get(rmbr, what="summary")
+mbr_get(rmbr, what="summary")
 ```
 
 ## Rank 'dual regulons'
@@ -100,7 +100,7 @@ The `mbr.duals` method ranks all candidates using the correlation values compute
 
 ```{r eval=TRUE}
 ##---make a toy example of additional evidences
-motifsInformation <- mbr.get(rmbr, what="motifsInformation")
+motifsInformation <- mbr_get(rmbr, what="motifsInformation")
 n <- nrow(motifsInformation)
 supplementaryTable <- motifsInformation[1:n,c("Regulon1","Regulon2")]
 supplementaryTable$ToyEvidence <- rnorm(n)
@@ -114,7 +114,7 @@ rmbr <- mbr.duals(rmbr, supplementary.table = supplementaryTable,
 The package provides the `mbr.plot.duals` function to visualize 'dual regulon' and the respective motifs, which represent the shared cloud of targets. **Figure 2** shows two examples of 'dual regulons' for the schematics illustrated in **Figure 1**. In **(a)** the two regulators agree on the downstream effect (i.e. same directions), while in **(b)** they disagree (i.e. opposite directions).
 
 ```{r eval=FALSE}
-dual <- mbr.get(rmbr, what="dualRegulons")[1]
+dual <- mbr_get(rmbr, what="dualRegulons")[1]
 mbr.plot.duals(rmbr, names.motifs = c(dual), alpha = 0.90)
 ```
 

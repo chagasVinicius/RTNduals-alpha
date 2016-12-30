@@ -138,7 +138,7 @@ mbr.checks <- function(name, para)
   }
   
   ##---
-  else if(name=="mbr.get")
+  else if(name=="mbr_get")
   {
     opts <- c("TNI1", "TNI2", "testedElementsTNI1", "testedElementsTNI2", 
               "dualRegulons", "results", "para", "summary", "status", 

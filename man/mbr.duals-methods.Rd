@@ -50,7 +50,7 @@ rmbr <- mbr.dpi.filter(rmbr)
 ##---mbr.association
 rmbr <- mbr.association(rmbr, prob=0.75)
 ##---a 'toy' table with supplementary evidences
-motifsInformation <- mbr.get(rmbr, what="motifsInformation")
+motifsInformation <- mbr_get(rmbr, what="motifsInformation")
 n <- nrow(motifsInformation)
 supplementaryTable <- motifsInformation[1:n,c("Regulon1","Regulon2")]
 supplementaryTable$ToyEvidence <- rnorm(n)
@@ -58,7 +58,7 @@ supplementaryTable$ToyEvidence <- rnorm(n)
 rmbr <- mbr.duals(rmbr, supplementary.table = supplementaryTable, 
 evidenceColname = "ToyEvidence")
 ##---motifsInformation with 'Evidence'
-motifsInformation <- mbr.get(rmbr, what="motifsInformation")
+motifsInformation <- mbr_get(rmbr, what="motifsInformation")
 head(motifsInformation)
 
 }

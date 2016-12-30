@@ -54,7 +54,7 @@ rmbr <- mbr.association(rmbr, prob=0.75)
 ##---mbr.duals
 rmbr <- mbr.duals(rmbr)
 ##---
-dual <- mbr.get(rmbr, what="dualRegulons")[1]
+dual <- mbr_get(rmbr, what="dualRegulons")[1]
 mbr.plot.duals(rmbr, names.motifs=dual)
 
 }
