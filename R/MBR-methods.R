@@ -91,7 +91,7 @@ setMethod("initialize",
 #' rmbr <- mbr.preprocess(gexp=gexp, regulatoryElements1 = tfs1, 
 #' regulatoryElements2=tfs2, gexpIDs=annot)
 #'
-#' @importFrom RTN tni.preprocess
+#' @import RTN 
 #'
 #' @import methods
 #' @docType methods
@@ -147,7 +147,7 @@ setMethod("mbr.preprocess",
 #' ##---mbr.permutation
 #' rmbr <- mbr.permutation(rmbr, nPermutations=10)
 #'
-#' @importFrom RTN tni.permutation
+#' @import RTN 
 #'
 #' @import methods
 #' @docType methods
@@ -206,7 +206,7 @@ setMethod("mbr.permutation",
 #' ##---mbr.bootstrap
 #' rmbr <- mbr.bootstrap(rmbr, nBootstrap=10)
 #'
-#' @importFrom RTN tni.bootstrap
+#' @import RTN 
 #'
 #' @import methods
 #' @docType methods
@@ -270,7 +270,7 @@ setMethod("mbr.bootstrap",
 #' ##---mbr.dpi.filter
 #' rmbr <- mbr.dpi.filter(rmbr)
 #'
-#' @importFrom RTN tni.dpi.filter
+#' @import RTN 
 #'
 #' @import methods
 #' @docType methods
@@ -351,7 +351,7 @@ setMethod("mbr.dpi.filter",
 #' ##---mbr.association
 #' rmbr <- mbr.association(rmbr, prob=0.75)
 #'
-#' @importFrom RTN tni.get
+#' @import RTN 
 #' @importFrom stats p.adjust phyper
 #' @importFrom stats cor quantile
 #'
