@@ -429,6 +429,59 @@
     if(verbose)setTxtProgressBar(pb, x/length(regs1))
   }
   if(verbose)close(pb)
-  object@results$motifsInformation <- motifsInformation
+  object <- .mbr.set(name="motifsInformation", para=motifsInformation, object=object)
   return (object)
 }
+##------------------------------------------------------------------------------
+#".mbr.set" internal function
+##it setts the slots of a MBR object
+.mbr.set <- 
+    function(name, para, object)
+    {
+        if(name=="para")
+        {
+            object@para <- para
+        }
+        else if(name=="summary")
+        {
+            object@summary <- para
+        }
+        else if(name=="status")
+        {
+            object@status <- para
+        }
+        else if(name=="TNI1")
+        {
+            object@TNI1 <- para
+        }
+        else if(name=="TNI2")
+        {
+            object@TNI2 <- para
+        }
+        else if(name=="statusUpdate")
+        {
+            object@status[para] <- "[x]"
+        }
+        else if(name=="testedElementsTNI1")
+        {
+            object@testedElementsTNI1 <- para
+        }
+        else if(name=="testedElementsTNI2")
+        {
+            object@testedElementsTNI2 <- para
+        }
+        else if(name=="dualRegulons")
+        {
+            object@dualRegulons <- para
+        }
+        else if(name=="motifsInformation")
+        {
+            object@results$motifsInformation <- para
+        }
+        else if(name=="hypergeometricResults")
+        {
+            object@results$hypergeometricResults <- para
+        }
+        
+        return(object)
+    }

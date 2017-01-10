@@ -29,7 +29,7 @@ messages (when verbose=TRUE) or not (when verbose=FALSE).}
 A preprocessed 'MBR-class' object.
 }
 \description{
-Constructor for 'MBR-class' objects.
+A preprocessing function for objects of class MBR.
 }
 \examples{
 data("dt4rtn", package = "RTN")

@@ -59,8 +59,9 @@ mbr.plot.duals <- function(object, names.motifs = NULL, filepath=NULL,
   mbr.checks(name="estimator", para=estimator)
   
   rtni <- .merge.tnis(object)
-  estimator <- rtni@para$perm$estimator
-  motifstb <- object@results$motifsInformation
+  rtni_para <- tni.get(rtni, what="para")
+  estimator <- rtni_para$perm$estimator
+  motifstb <- mbr_get(object, what="motifsInformation")
   motifstb <- .namesMotifs.check(motifstb, names.motifs)
   
   res <- apply(motifstb, 1, function (mtfs)
@@ -92,14 +93,17 @@ mbr.plot.duals <- function(object, names.motifs = NULL, filepath=NULL,
                              mapAssignedAssociation=TRUE)
 {
   ##---
-  idx1 <- match(duals, names(rtni@transcriptionFactors))
-  idx2 <- match(duals, rtni@transcriptionFactors)
+  tfs <- tni.get(rtni, "tfs")
+  idx1 <- match(duals, names(tfs))
+  idx2 <- match(duals, tfs)
   idxcheck<-which(is.na(idx1))
   idx1[idxcheck]<-idx2[idxcheck]
-  duals<-rtni@transcriptionFactors[idx1]
+  duals<-tfs[idx1]
   ##---
-  tnet<-rtni@results$tn.ref[,duals]
-  xy<-.tni.cor(rtni@gexp,tnet,asInteger=FALSE,estimator=estimator, 
+  reftnet <- tni.get(rtni, "refnet")
+  gexp <- tni.get(rtni, "gexp")
+  tnet<-reftnet[,duals]
+  xy<-.tni.cor(gexp,tnet,asInteger=FALSE,estimator=estimator, 
                mapAssignedAssociation=mapAssignedAssociation)
   if(sharedTargets)
   {
@@ -172,21 +176,23 @@ mbr.plot.duals <- function(object, names.motifs = NULL, filepath=NULL,
 ##subfunction for 'mbr.plot.duals'
 .merge.tnis <- function (object)
 {
-  elreg1 <- object@TNI1@transcriptionFactors
-  elreg2 <- object@TNI2@transcriptionFactors
+  TNI1 <- mbr_get(object, "TNI1")
+  TNI2 <- mbr_get(object, "TNI2")
+  elreg1 <- tni.get(TNI1, "tfs")
+  elreg2 <- tni.get(TNI2, "tfs")
   elregs <- c (elreg1, elreg2)
   rtni_merge <-
     new ("TNI",
-         gexp = object@TNI1@gexp,
+         gexp = tni.get(TNI1, "gexp"),
          transcriptionFactors = elregs)
   rtni_merge@annotation <- object@TNI1@annotation
-  rtni_merge@para <- object@TNI1@para
+  rtni_merge@para <- tni.get(TNI1, "para")
   #---
-  mirmt <- object@TNI2@results$tn.ref [, elreg2]
-  rtni_merge@results$tn.ref <- cbind (object@TNI1@results$tn.ref [, elreg1], 
+  mirmt <- tni.get(TNI2, "refnet") [, elreg2]
+  rtni_merge@results$tn.ref <- cbind (tni.get(TNI1, "refnet") [, elreg1], 
                                       mirmt)
-  mirmt <- object@TNI2@results$tn.dpi [, elreg2]
-  rtni_merge@results$tn.dpi <- cbind (object@TNI1@results$tn.dpi [, elreg1], 
+  mirmt <- tni.get(TNI2, "tnet") [, elreg2]
+  rtni_merge@results$tn.dpi <- cbind (tni.get(TNI1, "tnet") [, elreg1], 
                                       mirmt)
   rtni_merge@status [1:4] <- "[x]"
   return (rtni_merge)

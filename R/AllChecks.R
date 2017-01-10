@@ -3,6 +3,41 @@
 ##This function is used for argument checking
 mbr.checks <- function(name, para)
 {
+  if(name == "TNI")
+  {
+    if(!is.null(para))
+        stop("'TNIs' should be NULL")
+  }
+  if(name=="testedElementsTNI")
+  {
+    if((!is(para, "character") && !length(para)==0))
+        stop("'testedElementsTNIs' should be an empty 'character' vector")
+  }
+  if(name=="dualRegulons")
+  {
+    if((!is(para, "character") && !length(para)==0))
+        stop("'dualRegulons' should be an empty 'character' vector")
+  }
+  if(name=="results")
+  {
+    if((!is(para, "list") && !length(para)==0))
+        stop("'results' should be an empty 'list'")
+  }
+  if(name=="para")
+  {
+    if((!is(para, "list") && !length(para)==0))
+        stop("'para' should be an empty 'list'")
+  }
+  if(name=="summary")
+  {
+    if((!is(para, "list") && !length(para)==0))
+        stop("'summary' should be an empty 'list'")
+  }
+  if(name=="status")
+  {
+    if((!is(para, "character") && !length(para)==0))
+        stop("'status' should be an empty 'character' vector")
+  }
   if(name == "gexp")
   {
     if(!is.matrix(para) || !is.numeric(para[1, ]))
@@ -131,7 +166,7 @@ mbr.checks <- function(name, para)
   ##---
   else if(name == "tni")
   {
-    if(class(para) != 'TNI')
+    if((class(para) != 'TNI') || is.null(para))
     {
       stop("'tni1' and 'tni2' should be TNI-class objects!", call.=FALSE)
     }
