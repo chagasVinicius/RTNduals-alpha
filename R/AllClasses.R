@@ -26,23 +26,6 @@ setClassUnion("TNInull", members = c("TNI", "NULL"))
 #' based on the available methods.
 #' 
 #' @section Constructor:
-#' newMBR (..., TNI1=NULL, TNI2=NULL, testedElementsTNI1=character(),
-#' testedElementsTNI2=character(), dualRegulons=character(), results=list(), 
-#' para=list(), summary=list(), status=character()): Creates an MBR object.
-#' 
-#' \itemize{
-#' \item{...} - {Input data required to create the transcriptional networks: 
-#' 'gexp', 'regulatoryElements1' and 'regulatoryElements2'}
-#' \item {TNI1} - {NULL, or an 'TNI' object.}
-#' \item {TNI2} - {NULL, or an 'TNI' object.}
-#' \item {testedElementsTNI1} - {A character vector.}
-#' \item {testedElementsTNI2} - {A character vector.}
-#' \item {dualRegulons} - {A character vector.}
-#' \item {results} - {A list.}
-#' \item {para} - {A list}
-#' \item {summary} - {A list.}
-#' \item {status} - {A character vector.}
-#' }
 #' 
 #' There are two constructors to create an MBR object, users can opt for one of the following: 
 #' (1) \code{\link[RTNmotifs:mbr.preprocess]{mbr.preprocess}}; 
