@@ -30,19 +30,19 @@ GeneExpression, GraphAndNetwork\cr
 \tabular{ll}{
 \link[RTNmotifs:MBR-class]{MBR-class}: \tab an S4 class for co-regulation 
 analysis and inference of 'dual regulons'.\cr
-\link[RTNmotifs:mbr.preprocess]{mbr.preprocess}: \tab a preprocessing function 
+\link[RTNmotifs:mbrPreprocess]{mbrPreprocess}: \tab a preprocessing function 
 for objects of class MBR.\cr
-\link[RTNmotifs:mbr.permutation]{mbr.permutation}: \tab inference of 
+\link[RTNmotifs:mbrPermutation]{mbrPermutation}: \tab inference of 
 transcriptional networks.\cr
-\link[RTNmotifs:mbr.bootstrap]{mbr.bootstrap}: \tab inference of consensus 
+\link[RTNmotifs:mbrBootstrap]{mbrBootstrap}: \tab inference of consensus 
 transcriptional networks.\cr
-\link[RTNmotifs:mbr.dpi.filter]{mbr.dpi.filter}: \tab a filter based on the 
+\link[RTNmotifs:mbrDpiFilter]{mbrDpiFilter}: \tab a filter based on the 
 Data Processing Inequality (DPI) algorithm.\cr
-\link[RTNmotifs:mbr.association]{mbr.association}: \tab motifs analysis and 
+\link[RTNmotifs:mbrAssociation]{mbrAssociation}: \tab motifs analysis and 
 inference of "dual regulons".\cr
-\link[RTNmotifs:mbr.duals]{mbr.duals}: \tab a summary for results from the 
+\link[RTNmotifs:mbrDuals]{mbrDuals}: \tab a summary for results from the 
 MBR methods.\cr
-\link[RTNmotifs:tni2mbr.preprocess]{tni2mbr.preprocess}: \tab a preprocessing 
+\link[RTNmotifs:tni2mbrPreprocess]{tni2mbrPreprocess}: \tab a preprocessing 
 function for objects of class MBR.\cr
 }
 

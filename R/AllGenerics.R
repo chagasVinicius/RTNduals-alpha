@@ -1,31 +1,31 @@
 ##generic functions
 ##------------------------------------------------------------------------------
-setGeneric("mbr.preprocess",
+setGeneric("mbrPreprocess",
            function(gexp, regulatoryElements1, regulatoryElements2, 
                     verbose=TRUE,...)
-             standardGeneric("mbr.preprocess"), package="RTNmotifs")
-setGeneric("mbr.permutation",
+             standardGeneric("mbrPreprocess"), package="RTNmotifs")
+setGeneric("mbrPermutation",
            function(object, verbose = TRUE, ...)
-             standardGeneric("mbr.permutation"), package="RTNmotifs")
-setGeneric("mbr.bootstrap",
+             standardGeneric("mbrPermutation"), package="RTNmotifs")
+setGeneric("mbrBootstrap",
            function(object, verbose = TRUE, ...)
-             standardGeneric("mbr.bootstrap"), package="RTNmotifs")
-setGeneric("mbr.dpi.filter",
+             standardGeneric("mbrBootstrap"), package="RTNmotifs")
+setGeneric("mbrDpiFilter",
            function(object, verbose = TRUE, ...)
-             standardGeneric("mbr.dpi.filter"), package="RTNmotifs")
-setGeneric("mbr.association",
+             standardGeneric("mbrDpiFilter"), package="RTNmotifs")
+setGeneric("mbrAssociation",
            function(object, regulatoryElements1=NULL, 
                     regulatoryElements2=NULL, minRegulonSize=50, 
                     prob=0.95, estimator='spearman', 
                     pAdjustMethod="BH", verbose=TRUE)
-             standardGeneric("mbr.association"), package="RTNmotifs")
-setGeneric("mbr.duals",
+             standardGeneric("mbrAssociation"), package="RTNmotifs")
+setGeneric("mbrDuals",
            function(object, supplementary.table = NULL,
                     evidenceColname=NULL, verbose = TRUE)
-             standardGeneric("mbr.duals"), package="RTNmotifs")
-setGeneric("tni2mbr.preprocess",
+             standardGeneric("mbrDuals"), package="RTNmotifs")
+setGeneric("tni2mbrPreprocess",
            function(tni1, tni2,  verbose = TRUE)
-             standardGeneric("tni2mbr.preprocess"), package="RTNmotifs")
-setGeneric("mbr_get",
+             standardGeneric("tni2mbrPreprocess"), package="RTNmotifs")
+setGeneric("mbrGet",
            function(object, what="status")
-             standardGeneric("mbr_get"), package="RTNmotifs")
+             standardGeneric("mbrGet"), package="RTNmotifs")

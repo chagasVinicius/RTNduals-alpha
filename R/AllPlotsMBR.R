@@ -8,7 +8,7 @@
 #' This function plots the shared target clouds between a regulon pair.
 #'
 #' @param object A processed object of class \linkS4class{MBR} evaluated by 
-#' the method \code{\link[RTNmotifs:mbr.association]{mbr.association}}.
+#' the method \code{\link[RTNmotifs:mbrAssociation]{mbrAssociation}}.
 #' @param names.motifs A vector with 'dual regulon' indentifiers from the 
 #' 'motifsInformation' table.
 #' @param filepath A character string indicating the file path where the plot 
@@ -26,21 +26,21 @@
 #' annot <- dt4rtn$gexpIDs
 #' tfs1 <- dt4rtn$tfs[c("IRF8","IRF1","PRDM1","AFF3","E2F3")]
 #' tfs2 <- dt4rtn$tfs[c("HCLS1","STAT4","STAT1","LMO4","ZNF552")]
-#' ##---mbr.preprocess
-#' rmbr <- mbr.preprocess(gexp=gexp, regulatoryElements1 = tfs1, 
+#' ##---mbrPreprocess
+#' rmbr <- mbrPreprocess(gexp=gexp, regulatoryElements1 = tfs1, 
 #' regulatoryElements2=tfs2, gexpIDs=annot)
-#' ##---mbr.permutation
-#' rmbr <- mbr.permutation(rmbr, nPermutations=10)
-#' ##---mbr.bootstrap
-#' rmbr <- mbr.bootstrap(rmbr, nBootstrap=10)
-#' ##---mbr.dpi.filter
-#' rmbr <- mbr.dpi.filter(rmbr)
-#' ##---mbr.association
-#' rmbr <- mbr.association(rmbr, prob=0.75)
-#' ##---mbr.duals
-#' rmbr <- mbr.duals(rmbr)
+#' ##---mbrPermutation
+#' rmbr <- mbrPermutation(rmbr, nPermutations=10)
+#' ##---mbrBootstrap
+#' rmbr <- mbrBootstrap(rmbr, nBootstrap=10)
+#' ##---mbrDpiFilter
+#' rmbr <- mbrDpiFilter(rmbr)
+#' ##---mbrAssociation
+#' rmbr <- mbrAssociation(rmbr, prob=0.75)
+#' ##---mbrDuals
+#' rmbr <- mbrDuals(rmbr)
 #' ##---
-#' dual <- mbr_get(rmbr, what="dualRegulons")[1]
+#' dual <- mbrGet(rmbr, what="dualRegulons")[1]
 #' mbr.plot.duals(rmbr, names.motifs=dual)
 #'
 #' @import graphics
@@ -61,7 +61,7 @@ mbr.plot.duals <- function(object, names.motifs = NULL, filepath=NULL,
   rtni <- .merge.tnis(object)
   rtni_para <- tni.get(rtni, what="para")
   estimator <- rtni_para$perm$estimator
-  motifstb <- mbr_get(object, what="motifsInformation")
+  motifstb <- mbrGet(object, what="motifsInformation")
   motifstb <- .namesMotifs.check(motifstb, names.motifs)
   
   res <- apply(motifstb, 1, function (mtfs)
@@ -176,8 +176,8 @@ mbr.plot.duals <- function(object, names.motifs = NULL, filepath=NULL,
 ##subfunction for 'mbr.plot.duals'
 .merge.tnis <- function (object)
 {
-  TNI1 <- mbr_get(object, "TNI1")
-  TNI2 <- mbr_get(object, "TNI2")
+  TNI1 <- mbrGet(object, "TNI1")
+  TNI2 <- mbrGet(object, "TNI2")
   elreg1 <- tni.get(TNI1, "tfs")
   elreg2 <- tni.get(TNI2, "tfs")
   elregs <- c (elreg1, elreg2)

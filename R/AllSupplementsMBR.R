@@ -2,7 +2,7 @@
 #################  Internal functions for RTNmotifs-methods  ###################
 ################################################################################
 ##------------------------------------------------------------------------------
-#internal function for 'mbr.association'
+#internal function for 'mbrAssociation'
 ##it checks if the input regulatory elements are in the 'TNI' annotation
 .checkRegel <- function(tni, regulatoryElements)
 {
@@ -25,7 +25,7 @@
   }
 
 ##------------------------------------------------------------------------------
-#internal function for 'mbr.association'
+#internal function for 'mbrAssociation'
 ##creates a matrix of regulons (tnet) for analysis (can be numeric or factors)
 .regMatrix <- function(regulons, regel, getNames = TRUE, factors = FALSE)
 {
@@ -46,7 +46,7 @@
 }
 
 ##------------------------------------------------------------------------------
-#internal function for 'mbr.association'
+#internal function for 'mbrAssociation'
 ##gets significant associations inferred for motifs using the 'prob' parameter
 .motifsquantile <- function(regcor, th=0.99)
 {
@@ -75,7 +75,7 @@
 }
 
 ##------------------------------------------------------------------------------
-#internal function for 'mbr.association'
+#internal function for 'mbrAssociation'
 ##it gets the jaccard information between the 'duals'
 .jcOverlap <- function(pvlist, regel, tnet)
 {
@@ -146,7 +146,7 @@
 
 
 ##------------------------------------------------------------------------------
-#internal function for 'mbr.association'
+#internal function for 'mbrAssociation'
 ##gets mutual information between 'duals' reg. elements 
 ##and the p-value when available
 .getMIorP <- function(pvlist, regel, tbmi, size1, size2, 
@@ -188,7 +188,7 @@
 
 
 ##------------------------------------------------------------------------------
-#internal function for 'mbr.association'
+#internal function for 'mbrAssociation'
 ##it takes the correlation between regulons
 .tni.cor<-function(x, tnet, estimator="pearson",dg=0, asInteger=TRUE, 
                    mapAssignedAssociation=TRUE){
@@ -212,7 +212,7 @@
 }
 
 ##------------------------------------------------------------------------------
-#internal function for 'mbr.association'
+#internal function for 'mbrAssociation'
 ##This function takes two gene sets (i.e. regulons), a vector 
 ##containing the size of the gene universe, and compute the number of 
 ##genes expected to occur in both regulons, the actual observed overlap, 
@@ -274,7 +274,7 @@
   return(hyp.vec)
 }
 ##------------------------------------------------------------------------------
-#internal function for 'tni2mbr.preprocess'
+#internal function for 'tni2mbrPreprocess'
 ##it takes two 'TNIs' objects produced separetely and creates a 'MBR' object
 .combineTNIs <- function (tni1, tni2, verbose = TRUE)
 {
@@ -341,7 +341,7 @@
   }
 
 ##------------------------------------------------------------------------------
-#internal function for 'mbr.duals'
+#internal function for 'mbrDuals'
 ##it checks the consistency of supplementary.table
 .consisSuppTable <- function(object, supplementary.table, evidenceColname, 
                              verbose)
@@ -356,7 +356,7 @@
     stop("'evidenceColname' should be the third column in 'supplementary.table", 
          call.=FALSE)
   ##---
-  motifsInformation <- mbr_get(object, what="motifsInformation")
+  motifsInformation <- mbrGet(object, what="motifsInformation")
   colnms <- colnames(motifsInformation)
   if(evidenceColname%in%colnms)
   {
@@ -365,7 +365,7 @@
   ##-----
   ##-----Calcules the consistency
   idx <- which(colnames(supplementary.table)%in%evidenceColname)
-  tni1 <- mbr_get(object, what="TNI1"); annot <- tni1@annotation 
+  tni1 <- mbrGet(object, what="TNI1"); annot <- tni1@annotation 
   annot <- as.matrix(annot)
   tmp <- as.matrix(supplementary.table); ttmp <- tmp[,-idx]
   colnames(tmp) <- colnames(supplementary.table)
@@ -382,12 +382,12 @@
   return(tmp)
 }
 ##------------------------------------------------------------------------------
-#internal function for 'mbr.duals'
+#internal function for 'mbrDuals'
 ##it checks the evidences for 'duals' in 'supplementary.table'
 .checkLoops <- function (object, supplementary.table, evidenceColname, 
                          verbose=TRUE)
 {
-  motifsInformation <- mbr_get(object, what="motifsInformation")
+  motifsInformation <- mbrGet(object, what="motifsInformation")
   motifsInformation[, evidenceColname] <- NA
   ##---
   if(verbose) 
@@ -396,8 +396,8 @@
   if(verbose)pb<-txtProgressBar(style=3)
   x <- 0
   ##---
-  regs1 <- mbr_get(object, what="testedElementsTNI1")
-  regs2 <- mbr_get(object, what="testedElementsTNI2")
+  regs1 <- mbrGet(object, what="testedElementsTNI1")
+  regs2 <- mbrGet(object, what="testedElementsTNI2")
   regs <- c(regs1,regs2)
   for (i in 1:length(regs1))
   {

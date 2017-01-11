@@ -111,20 +111,20 @@ newMBR <-
 #' annot <- dt4rtn$gexpIDs
 #' tfs1 <- dt4rtn$tfs[c("IRF8","IRF1","PRDM1","AFF3","E2F3")]
 #' tfs2 <- dt4rtn$tfs[c("HCLS1","STAT4","STAT1","LMO4","ZNF552")]
-#' ##---mbr.preprocess
-#' rmbr <- mbr.preprocess(gexp=gexp, regulatoryElements1 = tfs1, 
+#' ##---mbrPreprocess
+#' rmbr <- mbrPreprocess(gexp=gexp, regulatoryElements1 = tfs1, 
 #' regulatoryElements2=tfs2, gexpIDs=annot)
 #'
 #' @import RTN 
 #'
 #' @import methods
 #' @docType methods
-#' @rdname mbr.preprocess-methods
-#' @aliases mbr.preprocess
+#' @rdname mbrPreprocess-methods
+#' @aliases mbrPreprocess
 #' @export
 
 ##Regulons pre-processing method
-setMethod("mbr.preprocess",
+setMethod("mbrPreprocess",
           "matrix",
           function(gexp, regulatoryElements1, regulatoryElements2, 
                    verbose=TRUE,...)
@@ -135,8 +135,8 @@ setMethod("mbr.preprocess",
                               regulatoryElements1=regulatoryElements1,
                               regulatoryElements2=regulatoryElements2)  
            ##---get TNIs
-           TNI1 <- mbr_get(object, what="TNI1")
-           TNI2 <- mbr_get(object, what="TNI2")
+           TNI1 <- mbrGet(object, what="TNI1")
+           TNI2 <- mbrGet(object, what="TNI2")
            ##---pre-processing TNIs
            if(verbose) cat("-Preprocessing TNI objects...\n\n")
            TNI1 <- tni.preprocess(TNI1, verbose=verbose,...=...)
@@ -176,22 +176,22 @@ setMethod("mbr.preprocess",
 #' annot <- dt4rtn$gexpIDs
 #' tfs1 <- dt4rtn$tfs[c("IRF8","IRF1","PRDM1","AFF3","E2F3")]
 #' tfs2 <- dt4rtn$tfs[c("HCLS1","STAT4","STAT1","LMO4","ZNF552")]
-#' ##---mbr.preprocess
-#' rmbr <- mbr.preprocess(gexp=gexp, regulatoryElements1 = tfs1, 
+#' ##---mbrPreprocess
+#' rmbr <- mbrPreprocess(gexp=gexp, regulatoryElements1 = tfs1, 
 #' regulatoryElements2=tfs2, gexpIDs=annot)
-#' ##---mbr.permutation
-#' rmbr <- mbr.permutation(rmbr, nPermutations=10)
+#' ##---mbrPermutation
+#' rmbr <- mbrPermutation(rmbr, nPermutations=10)
 #'
 #' @import RTN 
 #'
 #' @import methods
 #' @docType methods
-#' @rdname mbr.permutation-methods
-#' @aliases mbr.permutation
+#' @rdname mbrPermutation-methods
+#' @aliases mbrPermutation
 #' @export
 
 ## permutation
-setMethod("mbr.permutation",
+setMethod("mbrPermutation",
           "MBR",
           function(object, verbose=TRUE, ...)
           {
@@ -199,8 +199,8 @@ setMethod("mbr.permutation",
            mbr.checks(name="object", para=object)
            mbr.checks(name="verbose", para=verbose)
            ##---get TNIs
-           TNI1 <- mbr_get(object, what="TNI1")
-           TNI2 <- mbr_get(object, what="TNI2")
+           TNI1 <- mbrGet(object, what="TNI1")
+           TNI2 <- mbrGet(object, what="TNI2")
            
            ##---permutation TNIs
            if(verbose)
@@ -210,8 +210,8 @@ setMethod("mbr.permutation",
            #---get
            tni1_summary <- tni.get(TNI1, what="summary")
            tni2_summary <- tni.get(TNI2, what="summary")
-           mbr_summary <- mbr_get(object, what="summary")
-           mbr_para <- mbr_get(object, what="para")
+           mbr_summary <- mbrGet(object, what="summary")
+           mbr_para <- mbrGet(object, what="para")
            
            #---changes
            mbr_para$TNIs$perm <- tni1_summary$para$perm
@@ -238,7 +238,7 @@ setMethod("mbr.permutation",
 #' networks.
 #'
 #' @param object A processed objec of class \linkS4class{MBR} evaluated by the 
-#' method \code{\link[RTNmotifs:mbr.permutation]{mbr.permutation}}.
+#' method \code{\link[RTNmotifs:mbrPermutation]{mbrPermutation}}.
 #' @param verbose A single logical value specifying to display detailed 
 #' messages (when verbose=TRUE) or not (when verbose=FALSE).
 #' @param ... Additional arguments passed to the 
@@ -251,25 +251,25 @@ setMethod("mbr.permutation",
 #' annot <- dt4rtn$gexpIDs
 #' tfs1 <- dt4rtn$tfs[c("IRF8","IRF1","PRDM1","AFF3","E2F3")]
 #' tfs2 <- dt4rtn$tfs[c("HCLS1","STAT4","STAT1","LMO4","ZNF552")]
-#' ##---mbr.preprocess
-#' rmbr <- mbr.preprocess(gexp=gexp, regulatoryElements1 = tfs1, 
+#' ##---mbrPreprocess
+#' rmbr <- mbrPreprocess(gexp=gexp, regulatoryElements1 = tfs1, 
 #' regulatoryElements2=tfs2, gexpIDs=annot)
-#' ##---mbr.permutation
-#' rmbr <- mbr.permutation(rmbr, nPermutations=10)
-#' ##---mbr.bootstrap
-#' rmbr <- mbr.bootstrap(rmbr, nBootstrap=10)
+#' ##---mbrPermutation
+#' rmbr <- mbrPermutation(rmbr, nPermutations=10)
+#' ##---mbrBootstrap
+#' rmbr <- mbrBootstrap(rmbr, nBootstrap=10)
 #'
 #' @import RTN 
 #'
 #' @import methods
 #' @docType methods
-#' @rdname mbr.bootstrap-methods
-#' @aliases mbr.bootstrap
+#' @rdname mbrBootstrap-methods
+#' @aliases mbrBootstrap
 #' @export
 
 ##------------------------------------------------------------------------------
 ## bootstrap method
-setMethod("mbr.bootstrap",
+setMethod("mbrBootstrap",
           "MBR",
           function(object, verbose=TRUE, ...)
           {
@@ -277,8 +277,8 @@ setMethod("mbr.bootstrap",
            mbr.checks(name="object", para=object)
            mbr.checks(name="verbose", para=verbose)
            ##---get TNIs
-           TNI1 <- mbr_get(object, what="TNI1")
-           TNI2 <- mbr_get(object, what="TNI2")
+           TNI1 <- mbrGet(object, what="TNI1")
+           TNI2 <- mbrGet(object, what="TNI2")
            
            ##---bootstrap TNIs
            if(verbose) cat("-Performing bootstrap analysis for two TNI 
@@ -289,8 +289,8 @@ setMethod("mbr.bootstrap",
            #---get
            tni1_summary <- tni.get(TNI1, what="summary")
            tni2_summary <- tni.get(TNI2, what="summary")
-           mbr_summary <- mbr_get(object, what="summary")
-           mbr_para <- mbr_get(object, what="para")
+           mbr_summary <- mbrGet(object, what="summary")
+           mbr_para <- mbrGet(object, what="para")
            
            #---changes
            mbr_para$TNIs$boot <- tni1_summary$para$boot
@@ -317,8 +317,8 @@ setMethod("mbr.bootstrap",
 #'
 #' @param object A processed object of class \linkS4class{MBR} evaluated by 
 #' the methods
-#'  \code{\link[RTNmotifs:mbr.permutation]{mbr.permutation}} and 
-#'  \code{\link[RTNmotifs:mbr.bootstrap]{mbr.bootstrap}}.
+#'  \code{\link[RTNmotifs:mbrPermutation]{mbrPermutation}} and 
+#'  \code{\link[RTNmotifs:mbrBootstrap]{mbrBootstrap}}.
 #' @param verbose A single logical value specifying to display detailed 
 #' messages (when verbose=TRUE) or not (when verbose=FALSE).
 #' @param ... Additional arguments passed to the 
@@ -331,27 +331,27 @@ setMethod("mbr.bootstrap",
 #' annot <- dt4rtn$gexpIDs
 #' tfs1 <- dt4rtn$tfs[c("IRF8","IRF1","PRDM1","AFF3","E2F3")]
 #' tfs2 <- dt4rtn$tfs[c("HCLS1","STAT4","STAT1","LMO4","ZNF552")]
-#' ##---mbr.preprocess
-#' rmbr <- mbr.preprocess(gexp=gexp, regulatoryElements1 = tfs1, 
+#' ##---mbrPreprocess
+#' rmbr <- mbrPreprocess(gexp=gexp, regulatoryElements1 = tfs1, 
 #' regulatoryElements2=tfs2, gexpIDs=annot)
-#' ##---mbr.permutation
-#' rmbr <- mbr.permutation(rmbr, nPermutations=10)
-#' ##---mbr.bootstrap
-#' rmbr <- mbr.bootstrap(rmbr, nBootstrap=10)
-#' ##---mbr.dpi.filter
-#' rmbr <- mbr.dpi.filter(rmbr)
+#' ##---mbrPermutation
+#' rmbr <- mbrPermutation(rmbr, nPermutations=10)
+#' ##---mbrBootstrap
+#' rmbr <- mbrBootstrap(rmbr, nBootstrap=10)
+#' ##---mbrDpiFilter
+#' rmbr <- mbrDpiFilter(rmbr)
 #'
 #' @import RTN 
 #'
 #' @import methods
 #' @docType methods
-#' @rdname mbr.dpi.filter-methods
-#' @aliases mbr.dpi.filter
+#' @rdname mbrDpiFilter-methods
+#' @aliases mbrDpiFilter
 #' @export
 
 ##------------------------------------------------------------------------------
 ## dpi filter method
-setMethod("mbr.dpi.filter",
+setMethod("mbrDpiFilter",
           "MBR",
           function(object, verbose=TRUE, ...)
           {
@@ -359,8 +359,8 @@ setMethod("mbr.dpi.filter",
            mbr.checks(name="object", para=object)
            mbr.checks(name="verbose", para=verbose)
            ##---get TNIs
-           TNI1 <- mbr_get(object, what="TNI1")
-           TNI2 <- mbr_get(object, what="TNI2")
+           TNI1 <- mbrGet(object, what="TNI1")
+           TNI2 <- mbrGet(object, what="TNI2")
            
            ##---Dpi filter TNIs
            if(verbose) cat("-Applying dpi filter for two TNI objects...\n")
@@ -369,8 +369,8 @@ setMethod("mbr.dpi.filter",
            #---get
            tni1_summary <- tni.get(TNI1, what="summary")
            tni2_summary <- tni.get(TNI2, what="summary")
-           mbr_summary <- mbr_get(object, what="summary")
-           mbr_para <- mbr_get(object, what="para")
+           mbr_summary <- mbrGet(object, what="summary")
+           mbr_para <- mbrGet(object, what="para")
            
            #---changes
            mbr_para$TNIs$dpi <- tni1_summary$para$dpi
@@ -397,9 +397,9 @@ setMethod("mbr.dpi.filter",
 #' downstream effects.
 #'
 #' @param object A processed object of class \linkS4class{MBR} evaluated by the 
-#' methods \code{\link[RTNmotifs:mbr.permutation]{mbr.permutation}}, 
-#' \code{\link[RTNmotifs:mbr.bootstrap]{mbr.bootstrap}} 
-#' and \code{\link[RTNmotifs:mbr.dpi.filter]{mbr.dpi.filter}}.
+#' methods \code{\link[RTNmotifs:mbrPermutation]{mbrPermutation}}, 
+#' \code{\link[RTNmotifs:mbrBootstrap]{mbrBootstrap}} 
+#' and \code{\link[RTNmotifs:mbrDpiFilter]{mbrDpiFilter}}.
 #' @param regulatoryElements1 An optional character vector specifying which 
 #' 'TNI1' regulatory elements should be evaluated. If 'NULL' all regulatory 
 #' elements will be evaluated.
@@ -427,17 +427,17 @@ setMethod("mbr.dpi.filter",
 #' annot <- dt4rtn$gexpIDs
 #' tfs1 <- dt4rtn$tfs[c("IRF8","IRF1","PRDM1","AFF3","E2F3")]
 #' tfs2 <- dt4rtn$tfs[c("HCLS1","STAT4","STAT1","LMO4","ZNF552")]
-#' ##---mbr.preprocess
-#' rmbr <- mbr.preprocess(gexp=gexp, regulatoryElements1 = tfs1, 
+#' ##---mbrPreprocess
+#' rmbr <- mbrPreprocess(gexp=gexp, regulatoryElements1 = tfs1, 
 #' regulatoryElements2=tfs2, gexpIDs=annot)
-#' ##---mbr.permutation
-#' rmbr <- mbr.permutation(rmbr, nPermutations=10)
-#' ##---mbr.bootstrap
-#' rmbr <- mbr.bootstrap(rmbr, nBootstrap=10)
-#' ##---mbr.dpi.filter
-#' rmbr <- mbr.dpi.filter(rmbr)
-#' ##---mbr.association
-#' rmbr <- mbr.association(rmbr, prob=0.75)
+#' ##---mbrPermutation
+#' rmbr <- mbrPermutation(rmbr, nPermutations=10)
+#' ##---mbrBootstrap
+#' rmbr <- mbrBootstrap(rmbr, nBootstrap=10)
+#' ##---mbrDpiFilter
+#' rmbr <- mbrDpiFilter(rmbr)
+#' ##---mbrAssociation
+#' rmbr <- mbrAssociation(rmbr, prob=0.75)
 #'
 #' @import RTN 
 #' @importFrom stats p.adjust phyper
@@ -445,23 +445,23 @@ setMethod("mbr.dpi.filter",
 #'
 #' @import methods
 #' @docType methods
-#' @rdname mbr.association-methods
-#' @aliases mbr.association
+#' @rdname mbrAssociation-methods
+#' @aliases mbrAssociation
 #' @export
 
 ##------------------------------------------------------------------------------
 ##Inference of duals
-setMethod("mbr.association",
+setMethod("mbrAssociation",
           "MBR",
           function(object, regulatoryElements1=NULL, regulatoryElements2=NULL, 
                    minRegulonSize=30, prob=0.95, 
                    estimator='spearman', pAdjustMethod="BH", verbose=TRUE)
           {
             ##---gets
-              TNI1 <- mbr_get(object, what="TNI1")
+              TNI1 <- mbrGet(object, what="TNI1")
               tni1_gexp <- tni.get(TNI1, what="gexp")
               tni1_para <- tni.get(TNI1, what="para")
-              TNI2 <- mbr_get(object, what="TNI2")
+              TNI2 <- mbrGet(object, what="TNI2")
             ##---checks
               mbr.checks(name="minRegulonSize", para=minRegulonSize)
               mbr.checks(name="prob", para=prob)
@@ -558,7 +558,7 @@ setMethod("mbr.association",
                   pvlist <- .jcOverlap(pvlist, regel, tbmi)
                   
                   ##-----Hypergeometric
-                  ##tni1 <- mbr_get(object, what="TNI1")
+                  ##tni1 <- mbrGet(object, what="TNI1")
                   universe <- rownames(tni1_gexp)
                   hyperresults <- .mbr.hyper(pvlist=pvlist, regulons=regulons, 
                                              regel=regel, universe=universe, 
@@ -588,12 +588,12 @@ setMethod("mbr.association",
                           }
               
               ##-----para
-              mbr_para <- mbr_get(object,what="para")
+              mbr_para <- mbrGet(object,what="para")
               sum.info.par <- c(minRegulonSize, prob, estimator)
               mbr_para$MBR$association['Parameter', ] <- sum.info.par
               
               ##---
-              mbr_summary <- mbr_get(object, what="summary")
+              mbr_summary <- mbrGet(object, what="summary")
               info.summary.results <- nrow(pvlist)
               mbr_summary$MBR$Duals['duals',] <- info.summary.results
               ##-----set
@@ -624,7 +624,7 @@ setMethod("mbr.association",
 #' adds external evidences.
 #'
 #' @param object A processed object of class \linkS4class{MBR} evaluated by the 
-#' method \code{\link[RTNmotifs:mbr.association]{mbr.association}}.
+#' method \code{\link[RTNmotifs:mbrAssociation]{mbrAssociation}}.
 #' @param supplementary.table An optional 'data.frame' with three columns 
 #' representing 
 #' (1) regulatory elements of 'TNI1', (2) regulatory elements of 'TNI2', and 
@@ -641,39 +641,39 @@ setMethod("mbr.association",
 #' annot <- dt4rtn$gexpIDs
 #' tfs1 <- dt4rtn$tfs[c("IRF8","IRF1","PRDM1","AFF3","E2F3")]
 #' tfs2 <- dt4rtn$tfs[c("HCLS1","STAT4","STAT1","LMO4","ZNF552")]
-#' ##---mbr.preprocess
-#' rmbr <- mbr.preprocess(gexp=gexp, regulatoryElements1 = tfs1, 
+#' ##---mbrPreprocess
+#' rmbr <- mbrPreprocess(gexp=gexp, regulatoryElements1 = tfs1, 
 #' regulatoryElements2=tfs2, gexpIDs=annot)
-#' ##---mbr.permutation
-#' rmbr <- mbr.permutation(rmbr, nPermutations=10)
-#' ##---mbr.bootstrap
-#' rmbr <- mbr.bootstrap(rmbr, nBootstrap=10)
-#' ##---mbr.dpi.filter
-#' rmbr <- mbr.dpi.filter(rmbr)
-#' ##---mbr.association
-#' rmbr <- mbr.association(rmbr, prob=0.75)
+#' ##---mbrPermutation
+#' rmbr <- mbrPermutation(rmbr, nPermutations=10)
+#' ##---mbrBootstrap
+#' rmbr <- mbrBootstrap(rmbr, nBootstrap=10)
+#' ##---mbrDpiFilter
+#' rmbr <- mbrDpiFilter(rmbr)
+#' ##---mbrAssociation
+#' rmbr <- mbrAssociation(rmbr, prob=0.75)
 #' ##---a 'toy' table with supplementary evidences
-#' motifsInformation <- mbr_get(rmbr, what="motifsInformation")
+#' motifsInformation <- mbrGet(rmbr, what="motifsInformation")
 #' n <- nrow(motifsInformation)
 #' supplementaryTable <- motifsInformation[1:n,c("Regulon1","Regulon2")]
 #' supplementaryTable$ToyEvidence <- rnorm(n)
-#' ##---mbr.duals
-#' rmbr <- mbr.duals(rmbr, supplementary.table = supplementaryTable, 
+#' ##---mbrDuals
+#' rmbr <- mbrDuals(rmbr, supplementary.table = supplementaryTable, 
 #' evidenceColname = "ToyEvidence")
 #' ##---motifsInformation with 'Evidence'
-#' motifsInformation <- mbr_get(rmbr, what="motifsInformation")
+#' motifsInformation <- mbrGet(rmbr, what="motifsInformation")
 #' head(motifsInformation)
 #'
 #' @importFrom utils setTxtProgressBar txtProgressBar
 #' @import methods
 #' @docType methods
-#' @rdname mbr.duals-methods
-#' @aliases mbr.duals
+#' @rdname mbrDuals-methods
+#' @aliases mbrDuals
 #' @export
 
 ##------------------------------------------------------------------------------
 ##organize duals
-setMethod( "mbr.duals",
+setMethod( "mbrDuals",
            "MBR",
            function(object, supplementary.table=NULL, evidenceColname, 
                     verbose=TRUE)
@@ -681,7 +681,7 @@ setMethod( "mbr.duals",
             ##---checks
             mbr.checks(name="object", para=object)
             ##---
-            motifsInformation <- mbr_get(object, what="motifsInformation")
+            motifsInformation <- mbrGet(object, what="motifsInformation")
             if(is.null(dim(motifsInformation)))
              stop("'motifsInformation' seems null!")
             if(verbose) cat("-Sorting by the R value...\n")
@@ -734,28 +734,28 @@ setMethod( "mbr.duals",
 #' annot <- dt4rtn$gexpIDs
 #' tfs1 <- dt4rtn$tfs[c("IRF8","IRF1","PRDM1","AFF3","E2F3")]
 #' tfs2 <- dt4rtn$tfs[c("HCLS1","STAT4","STAT1","LMO4","ZNF552")]
-#' ##---mbr.preprocess
-#' rmbr <- mbr.preprocess(gexp=gexp, regulatoryElements1 = tfs1, 
+#' ##---mbrPreprocess
+#' rmbr <- mbrPreprocess(gexp=gexp, regulatoryElements1 = tfs1, 
 #' regulatoryElements2=tfs2, gexpIDs=annot)
-#' ##---mbr.permutation
-#' rmbr <- mbr.permutation(rmbr, nPermutations=10)
-#' ##---mbr.bootstrap
-#' rmbr <- mbr.bootstrap(rmbr, nBootstrap=10)
-#' rmbr <- mbr.dpi.filter(rmbr)
-#' ##---tni2mbr.preprocess
-#' tni1 <- mbr_get(rmbr, what="TNI1")
-#' tni2 <- mbr_get(rmbr, what="TNI2")
-#' rmbr <- tni2mbr.preprocess(tni1, tni2)
+#' ##---mbrPermutation
+#' rmbr <- mbrPermutation(rmbr, nPermutations=10)
+#' ##---mbrBootstrap
+#' rmbr <- mbrBootstrap(rmbr, nBootstrap=10)
+#' rmbr <- mbrDpiFilter(rmbr)
+#' ##---tni2mbrPreprocess
+#' tni1 <- mbrGet(rmbr, what="TNI1")
+#' tni2 <- mbrGet(rmbr, what="TNI2")
+#' rmbr <- tni2mbrPreprocess(tni1, tni2)
 #'
 #' @import methods
 #' @docType methods
-#' @rdname tni2mbr.preprocess-methods
-#' @aliases tni2mbr.preprocess
+#' @rdname tni2mbrPreprocess-methods
+#' @aliases tni2mbrPreprocess
 #' @export
 
 ##------------------------------------------------------------------------------
 ##Combine two TNIs produced separately
-setMethod("tni2mbr.preprocess",
+setMethod("tni2mbrPreprocess",
           "TNI",
           function (tni1,  tni2,  verbose=TRUE)
           {
@@ -782,8 +782,8 @@ setMethod("tni2mbr.preprocess",
            #---get Updates
            tni1_summary <- tni.get(tni1, what="summary")
            tni2_summary <- tni.get(tni2, what="summary")
-           mbr_summary <- mbr_get(object, what="summary")
-           mbr_para <- mbr_get(object, what="para")
+           mbr_summary <- mbrGet(object, what="summary")
+           mbr_para <- mbrGet(object, what="para")
            
            ##---permutation
            
@@ -840,26 +840,26 @@ setMethod( "show",
 #' annot <- dt4rtn$gexpIDs
 #' tfs1 <- dt4rtn$tfs[c("IRF8","IRF1","PRDM1","AFF3","E2F3")]
 #' tfs2 <- dt4rtn$tfs[c("HCLS1","STAT4","STAT1","LMO4","ZNF552")]
-#' ##---mbr.preprocess
-#' rmbr <- mbr.preprocess(gexp=gexp, regulatoryElements1 = tfs1, 
+#' ##---mbrPreprocess
+#' rmbr <- mbrPreprocess(gexp=gexp, regulatoryElements1 = tfs1, 
 #' regulatoryElements2=tfs2, gexpIDs=annot)
-#' ##---get the 'TNI1' slot using 'mbr_get'
-#' tni1 <- mbr_get(rmbr, what="TNI1")
+#' ##---get the 'TNI1' slot using 'mbrGet'
+#' tni1 <- mbrGet(rmbr, what="TNI1")
 #' 
 #' @import methods
 #' @docType methods
-#' @rdname mbr_get-methods
-#' @aliases mbr_get
+#' @rdname mbrGet-methods
+#' @aliases mbrGet
 #' @export
 ##------------------------------------------------------------------------------
 ##get slots from MBR object
-setMethod( "mbr_get",
+setMethod( "mbrGet",
            "MBR", 
            function(object, what="status")
            {
             ##---check input arguments
             mbr.checks(name="object", para=object)
-            mbr.checks(name="mbr_get", para=what)
+            mbr.checks(name="mbrGet", para=what)
             ##---Association options any change needs update!
             optsAssoci <- c("testedElementsTNI1", "testedElementsTNI2", 
                             "dualRegulons", "motifsInformation", "results", 
@@ -889,7 +889,7 @@ setMethod( "mbr_get",
             {
              if(object@status["Association"] != "[x]")
              {
-              warning("NOTE: input 'object' needs 'mbr.association' 
+              warning("NOTE: input 'object' needs 'mbrAssociation' 
                       evaluation!")
               query <- NULL
              } else {

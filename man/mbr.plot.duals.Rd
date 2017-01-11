@@ -10,7 +10,7 @@ mbr.plot.duals(object, names.motifs = NULL, filepath = NULL, alpha = 0.8,
 }
 \arguments{
 \item{object}{A processed object of class \linkS4class{MBR} evaluated by 
-the method \code{\link[RTNmotifs:mbr.association]{mbr.association}}.}
+the method \code{\link[RTNmotifs:mbrAssociation]{mbrAssociation}}.}
 
 \item{names.motifs}{A vector with 'dual regulon' indentifiers from the 
 'motifsInformation' table.}
@@ -40,21 +40,21 @@ gexp <- dt4rtn$gexp
 annot <- dt4rtn$gexpIDs
 tfs1 <- dt4rtn$tfs[c("IRF8","IRF1","PRDM1","AFF3","E2F3")]
 tfs2 <- dt4rtn$tfs[c("HCLS1","STAT4","STAT1","LMO4","ZNF552")]
-##---mbr.preprocess
-rmbr <- mbr.preprocess(gexp=gexp, regulatoryElements1 = tfs1, 
+##---mbrPreprocess
+rmbr <- mbrPreprocess(gexp=gexp, regulatoryElements1 = tfs1, 
 regulatoryElements2=tfs2, gexpIDs=annot)
-##---mbr.permutation
-rmbr <- mbr.permutation(rmbr, nPermutations=10)
-##---mbr.bootstrap
-rmbr <- mbr.bootstrap(rmbr, nBootstrap=10)
-##---mbr.dpi.filter
-rmbr <- mbr.dpi.filter(rmbr)
-##---mbr.association
-rmbr <- mbr.association(rmbr, prob=0.75)
-##---mbr.duals
-rmbr <- mbr.duals(rmbr)
+##---mbrPermutation
+rmbr <- mbrPermutation(rmbr, nPermutations=10)
+##---mbrBootstrap
+rmbr <- mbrBootstrap(rmbr, nBootstrap=10)
+##---mbrDpiFilter
+rmbr <- mbrDpiFilter(rmbr)
+##---mbrAssociation
+rmbr <- mbrAssociation(rmbr, prob=0.75)
+##---mbrDuals
+rmbr <- mbrDuals(rmbr)
 ##---
-dual <- mbr_get(rmbr, what="dualRegulons")[1]
+dual <- mbrGet(rmbr, what="dualRegulons")[1]
 mbr.plot.duals(rmbr, names.motifs=dual)
 
 }

@@ -27,7 +27,7 @@ All the information is stored in nine slots.
 \item{\code{testedElementsTNI2}}{regulatory elements listed in the TNI2.}
 
 \item{\code{dualRegulons}}{all possible 'duals regulons' computed by 
-\code{\link[RTNmotifs:mbr.association]{mbr.association}}}
+\code{\link[RTNmotifs:mbrAssociation]{mbrAssociation}}}
 
 \item{\code{results}}{a list, results from the MBR methods.}
 
@@ -42,8 +42,8 @@ based on the available methods.}
 
 
 There are two constructors to create an MBR object, users can opt for one of the following: 
-(1) \code{\link[RTNmotifs:mbr.preprocess]{mbr.preprocess}}; 
-(2) \code{\link[RTNmotifs:tni2mbr.preprocess]{tni2mbr.preprocess}}.
+(1) \code{\link[RTNmotifs:mbrPreprocess]{mbrPreprocess}}; 
+(2) \code{\link[RTNmotifs:tni2mbrPreprocess]{tni2mbrPreprocess}}.
 \itemize{
 \item {(1)}: {It is used to create an MBR object without any pre-computed transcriptional network.}
 \item {(2)}: {It is used to create an MBR object using available transcriptional networks.} 
