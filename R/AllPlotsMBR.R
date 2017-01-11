@@ -41,7 +41,7 @@
 #' rmbr <- mbrDuals(rmbr)
 #' ##---
 #' dual <- mbrGet(rmbr, what="dualRegulons")[1]
-#' mbr.plot.duals(rmbr, names.motifs=dual)
+#' mbrPlotDuals(rmbr, names.motifs=dual)
 #'
 #' @import graphics
 #' @importFrom grDevices adjustcolor dev.off pdf colorRampPalette
@@ -50,7 +50,7 @@
 #' @export
 
 ##------------------------------------------------------------------------------
-mbr.plot.duals <- function(object, names.motifs = NULL, filepath=NULL, 
+mbrPlotDuals <- function(object, names.motifs = NULL, filepath=NULL, 
                            alpha=0.80,lncols=c("darkgreen","darkorange3"), 
                            lwd=0.70, estimator="spearman")
 {
@@ -85,7 +85,7 @@ mbr.plot.duals <- function(object, names.motifs = NULL, filepath=NULL,
 }
 
 ##------------------------------------------------------------------------------
-##subfunction for 'mbr.plot.duals'
+##subfunction for 'mbrPlotDuals'
 .tni.plot.greement<-function(rtni,duals,corVal,file=NULL,
                              lncols=c("blue","red"), 
                              bgcols=lncols, lwd=0.70, alpha=0.80, 
@@ -173,7 +173,7 @@ mbr.plot.duals <- function(object, names.motifs = NULL, filepath=NULL,
 }
 
 
-##subfunction for 'mbr.plot.duals'
+##subfunction for 'mbrPlotDuals'
 .merge.tnis <- function (object)
 {
   TNI1 <- mbrGet(object, "TNI1")
@@ -198,7 +198,7 @@ mbr.plot.duals <- function(object, names.motifs = NULL, filepath=NULL,
   return (rtni_merge)
 }
 
-##subfunction for 'mbr.plot.duals'
+##subfunction for 'mbrPlotDuals'
 .namesMotifs.check <- function(motifstb, names.motifs)
 {
   if (!is.null (names.motifs))

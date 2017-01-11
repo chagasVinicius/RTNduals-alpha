@@ -110,15 +110,15 @@ rmbr <- mbrDuals(rmbr, supplementary.table = supplementaryTable,
 ```
 
 ## Visualize the shared cloud of targets
-The package provides the `mbr.plot.duals` function to visualize 'dual regulon' and the respective motifs, which represent the shared cloud of targets. **Figure 2** shows two examples of 'dual regulons' for the schematics illustrated in **Figure 1**. In **(a)** the two regulators agree on the downstream effect (i.e. same directions), while in **(b)** they disagree (i.e. opposite directions).
+The package provides the `mbrPlotDuals` function to visualize 'dual regulon' and the respective motifs, which represent the shared cloud of targets. **Figure 2** shows two examples of 'dual regulons' for the schematics illustrated in **Figure 1**. In **(a)** the two regulators agree on the downstream effect (i.e. same directions), while in **(b)** they disagree (i.e. opposite directions).
 
 ```{r eval=FALSE}
 dual <- mbrGet(rmbr, what="dualRegulons")[1]
-mbr.plot.duals(rmbr, names.motifs = c(dual), alpha = 0.90)
+mbrPlotDuals(rmbr, names.motifs = c(dual), alpha = 0.90)
 ```
 
 ![title](figures/duals.png)
-<legend><b>Figure 2.</b>  The <b>'mbr.plot.duals'</b> function shows the shared cloud of targets. In (<b>a</b>) the regulators agree on the downstream effects, while in (<b>b</b>) they disagree. The colour pattern follows the schematics in <b>Figure 1</b>.</legend>
+<legend><b>Figure 2.</b>  The <b>'mbrPlotDuals'</b> function shows the shared cloud of targets. In (<b>a</b>) the regulators agree on the downstream effects, while in (<b>b</b>) they disagree. The colour pattern follows the schematics in <b>Figure 1</b>.</legend>
 
 ## Session Info
 ```{r}
