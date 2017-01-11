@@ -1,7 +1,7 @@
 Package: RTNmotifs
 Type: Package
 Title: Co-regulation analysis and inference of 'dual regulons'
-Version: 0.99.3
+Version: 0.99.4
 Author: Vinicius S. Chagas, Clarice S. Groeneveld, Gordon Robertson, Kerstin B. Meyer, Mauro A. A. Castro
 Maintainer: Vinicius Chagas <vinicius.chagas@ufpr.br>, Mauro Castro <mauro.castro@ufpr.br>, Clarice Groeneveld <clari.groeneveld@gmail.com>
 Depends: R (>= 3.4), methods, RTN, graphics
