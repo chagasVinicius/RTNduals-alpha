@@ -1,1 +1,1 @@
-BiocGenerics:::testPackage("RTNmotifs")
+BiocGenerics:::testPackage("RTNduals")
