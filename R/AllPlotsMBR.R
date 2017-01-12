@@ -8,7 +8,7 @@
 #' This function plots the shared target clouds between a regulon pair.
 #'
 #' @param object A processed object of class \linkS4class{MBR} evaluated by 
-#' the method \code{\link[RTNmotifs:mbrAssociation]{mbrAssociation}}.
+#' the method \code{\link[RTNduals:mbrAssociation]{mbrAssociation}}.
 #' @param names.motifs A vector with 'dual regulon' indentifiers from the 
 #' 'motifsInformation' table.
 #' @param filepath A character string indicating the file path where the plot 

@@ -11,7 +11,7 @@
 }
 \arguments{
 \item{object}{A processed object of class \linkS4class{MBR} evaluated by the 
-method \code{\link[RTNmotifs:mbrAssociation]{mbrAssociation}}.}
+method \code{\link[RTNduals:mbrAssociation]{mbrAssociation}}.}
 
 \item{supplementary.table}{An optional 'data.frame' with three columns 
 representing 

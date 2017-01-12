@@ -10,7 +10,7 @@ mbrPlotDuals(object, names.motifs = NULL, filepath = NULL, alpha = 0.8,
 }
 \arguments{
 \item{object}{A processed object of class \linkS4class{MBR} evaluated by 
-the method \code{\link[RTNmotifs:mbrAssociation]{mbrAssociation}}.}
+the method \code{\link[RTNduals:mbrAssociation]{mbrAssociation}}.}
 
 \item{names.motifs}{A vector with 'dual regulon' indentifiers from the 
 'motifsInformation' table.}

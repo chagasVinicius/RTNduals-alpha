@@ -12,9 +12,9 @@
 }
 \arguments{
 \item{object}{A processed object of class \linkS4class{MBR} evaluated by the 
-methods \code{\link[RTNmotifs:mbrPermutation]{mbrPermutation}}, 
-\code{\link[RTNmotifs:mbrBootstrap]{mbrBootstrap}} 
-and \code{\link[RTNmotifs:mbrDpiFilter]{mbrDpiFilter}}.}
+methods \code{\link[RTNduals:mbrPermutation]{mbrPermutation}}, 
+\code{\link[RTNduals:mbrBootstrap]{mbrBootstrap}} 
+and \code{\link[RTNduals:mbrDpiFilter]{mbrDpiFilter}}.}
 
 \item{regulatoryElements1}{An optional character vector specifying which 
 'TNI1' regulatory elements should be evaluated. If 'NULL' all regulatory 

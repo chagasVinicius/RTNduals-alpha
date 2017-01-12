@@ -238,7 +238,7 @@ setMethod("mbrPermutation",
 #' networks.
 #'
 #' @param object A processed objec of class \linkS4class{MBR} evaluated by the 
-#' method \code{\link[RTNmotifs:mbrPermutation]{mbrPermutation}}.
+#' method \code{\link[RTNduals:mbrPermutation]{mbrPermutation}}.
 #' @param verbose A single logical value specifying to display detailed 
 #' messages (when verbose=TRUE) or not (when verbose=FALSE).
 #' @param ... Additional arguments passed to the 
@@ -317,8 +317,8 @@ setMethod("mbrBootstrap",
 #'
 #' @param object A processed object of class \linkS4class{MBR} evaluated by 
 #' the methods
-#'  \code{\link[RTNmotifs:mbrPermutation]{mbrPermutation}} and 
-#'  \code{\link[RTNmotifs:mbrBootstrap]{mbrBootstrap}}.
+#'  \code{\link[RTNduals:mbrPermutation]{mbrPermutation}} and 
+#'  \code{\link[RTNduals:mbrBootstrap]{mbrBootstrap}}.
 #' @param verbose A single logical value specifying to display detailed 
 #' messages (when verbose=TRUE) or not (when verbose=FALSE).
 #' @param ... Additional arguments passed to the 
@@ -397,9 +397,9 @@ setMethod("mbrDpiFilter",
 #' downstream effects.
 #'
 #' @param object A processed object of class \linkS4class{MBR} evaluated by the 
-#' methods \code{\link[RTNmotifs:mbrPermutation]{mbrPermutation}}, 
-#' \code{\link[RTNmotifs:mbrBootstrap]{mbrBootstrap}} 
-#' and \code{\link[RTNmotifs:mbrDpiFilter]{mbrDpiFilter}}.
+#' methods \code{\link[RTNduals:mbrPermutation]{mbrPermutation}}, 
+#' \code{\link[RTNduals:mbrBootstrap]{mbrBootstrap}} 
+#' and \code{\link[RTNduals:mbrDpiFilter]{mbrDpiFilter}}.
 #' @param regulatoryElements1 An optional character vector specifying which 
 #' 'TNI1' regulatory elements should be evaluated. If 'NULL' all regulatory 
 #' elements will be evaluated.
@@ -624,7 +624,7 @@ setMethod("mbrAssociation",
 #' adds external evidences.
 #'
 #' @param object A processed object of class \linkS4class{MBR} evaluated by the 
-#' method \code{\link[RTNmotifs:mbrAssociation]{mbrAssociation}}.
+#' method \code{\link[RTNduals:mbrAssociation]{mbrAssociation}}.
 #' @param supplementary.table An optional 'data.frame' with three columns 
 #' representing 
 #' (1) regulatory elements of 'TNI1', (2) regulatory elements of 'TNI2', and 

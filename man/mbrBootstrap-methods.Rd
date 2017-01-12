@@ -10,7 +10,7 @@
 }
 \arguments{
 \item{object}{A processed objec of class \linkS4class{MBR} evaluated by the 
-method \code{\link[RTNmotifs:mbrPermutation]{mbrPermutation}}.}
+method \code{\link[RTNduals:mbrPermutation]{mbrPermutation}}.}
 
 \item{verbose}{A single logical value specifying to display detailed 
 messages (when verbose=TRUE) or not (when verbose=FALSE).}
